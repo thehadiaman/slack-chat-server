@@ -1,6 +1,6 @@
 const app = require('express')();
 
-
+require('./startup/config')();
 require('./startup/database')();
 require('./startup/routes')(app);
 

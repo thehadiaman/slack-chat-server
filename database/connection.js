@@ -1,10 +1,10 @@
 const {MongoClient} = require('mongodb');
-
+const config = require('config');
 
 let database;
 
 exports.connect = async()=>{
-    const uri = 'mongodb://localhost:27017';
+    const uri = config.get('DATABASE_URI');
     const client = new MongoClient(uri);
 
     await client.connect()
