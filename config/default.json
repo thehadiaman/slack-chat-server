@@ -1,5 +1,6 @@
 {
     "DATABASE_URI": "",
     "SLACK_AUTH_TOKEN": "",
-    "CHANNEL_ID": ""
+    "CHANNEL_ID": "",
+    "DB_NAME": ""
 }

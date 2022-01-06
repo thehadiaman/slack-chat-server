@@ -9,7 +9,7 @@ exports.connect = async()=>{
 
     await client.connect()
     .then((db)=>{
-        database = db.db;
+        database = db.db(config.get('DB_NAME'));
         console.log('MongoDB connection successful.');
     })
     .catch((error)=>{
@@ -18,6 +18,6 @@ exports.connect = async()=>{
     });
 };
 
-exports.database = ()=>{
+exports.database = function(){
     return database;
 };

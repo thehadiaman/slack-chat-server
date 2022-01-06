@@ -7,7 +7,6 @@ const replayMessage = require('../slack/replay-message');
 const config = require('config');
 
 
-
 router.post('/send-message', async(req, res)=>{
     const response = await sendMessage(config.get('CHANNEL_ID'), req.body.message);
 

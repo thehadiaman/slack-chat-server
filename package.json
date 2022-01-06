@@ -13,6 +13,8 @@
     "@slack/web-api": "^6.5.1",
     "config": "^3.3.6",
     "express": "^4.17.2",
+    "joi": "^17.5.0",
+    "joi-objectid": "^4.0.2",
     "mongodb": "^4.2.2"
   }
 }
