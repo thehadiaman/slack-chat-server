@@ -5,17 +5,22 @@ exports.Product = {
     getProduct: (filter)=>{
         return database().collection(PRODUCT_COLLECTION).findOne(filter);
     },
-    makePurchase: (product)=>{
-        database().collection(PURCHASE_COLLECTION).insertOne(product);
+    makePurchase: async(purchase)=>{
+        await database().collection(PURCHASE_COLLECTION).insertOne(purchase);
+        purchase = await database().collection(PURCHASE_COLLECTION).findOne(purchase);
+        return purchase._id;
+    },
+    checkPurchase: async(purchaseId)=>{
+        return await database().collection(PURCHASE_COLLECTION).findOne({_id: purchaseId});
     },
     getPurchaseDetails: (purchaseId)=>{
+
         return database().collection(PURCHASE_COLLECTION).aggregate([
             {
                 $match: {
-                    purchase_id: purchaseId
+                    _id: purchaseId
                 },
-                $unwind: "$customer_support"
             }
-        ]);
+        ]).toArray();
     },
 };

@@ -8,5 +8,5 @@ const schemas = {
 };
 
 exports.validateBody = function(schema, data){
-    Joi.object(schemas[schema]).validate(data);
+    return Joi.object(schemas[schema]).validate(data);
 };

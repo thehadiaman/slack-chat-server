@@ -1,5 +1,6 @@
 {
     "USERS_COLLECTION": "users",
     "PRODUCT_COLLECTION": "products",
-    "PURCHASE_COLLECTION": "purchase"
+    "PURCHASE_COLLECTION": "purchases",
+    "CUSTOMER_SUPPORT_COLLECTION": "support"
 }

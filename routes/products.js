@@ -5,14 +5,16 @@ const productSchema = require('../schemas/product');
 const { validateBody } = require('../validation/product');
 
 router.post('/purchase', async(req, res)=>{
-    validateBody('purchaseSchema', req.body);
+    const {error} = validateBody('purchaseSchema', req.body);
+    if(error) return res.status(400).send(error.details[0].message);
 
     let product = await Product.getProduct({_id: ObjectId(req.body.product_id)});
     if(!product) return res.status(404).send('Product is not available.');
 
     product = productSchema(req.body);
-    await Product.makePurchase(product);
-    res.send(`purchase id: ${product.purchase_id}`);
+    const purchaseId = await Product.makePurchase(product);
+
+    res.send(purchaseId);
 });
 
 router.get('/check-purchase-id/:purchase_id', async(req, res)=>{
