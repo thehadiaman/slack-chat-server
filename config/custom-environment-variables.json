@@ -2,5 +2,6 @@
     "DATABASE_URI": "DB_URI",
     "SLACK_AUTH_TOKEN": "SLACK_AUTH",
     "CHANNEL_ID": "CH_ID",
-    "DB_NAME": "DBN"
+    "DB_NAME": "DBN",
+    "PORT": "PORT"
 }

@@ -1,10 +1,11 @@
 const app = require('express')();
+const config = require('config');
 
 require('./startup/config')();
 require('./startup/database')();
 require('./startup/routes')(app);
 
-
-app.listen(3000, ()=>{
-    console.log('Listening on port 3000.');
+const port = config.get('PORT');
+app.listen(port, ()=>{
+    console.log(`Listening on port ${port}.`);
 });

@@ -6,4 +6,5 @@ module.exports = function() {
     if(config.get('SLACK_AUTH_TOKEN')==="") throw new Error('Environment variable SLACK_AUTH is not defined');
     if(config.get('CHANNEL_ID')==="") throw new Error('Environment variable CH_ID is not defined'); 
     if(config.get('DB_NAME')==="") throw new Error('Environment variable DBN is not defined'); 
+    if(config.get('PORT')==="") throw new Error('Environment variable PORT is not defined'); 
 };
