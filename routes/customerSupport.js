@@ -7,6 +7,7 @@ const router = require('express').Router();
 const sendMessage = require('../slack/send-message');
 const sendMessageToThread = require('../slack/replay-message');
 const config = require('config');
+const getReplayMessage = require('../slack/get-replay-message');
 
 router.post('/submit-question', async(req, res)=>{
     const {error} = validateCustomerSupport("questionSchema", req.body);
@@ -38,6 +39,17 @@ router.post('/send-message', async(req, res)=>{
     if(!response) return res.status(400).send('Invalid parameters.');
 
     res.send('message send.');
+});
+
+router.get('/get-messages/:ts', async(req, res)=>{
+    const ts = await CustomerSupport.findByThread(req.params.ts);
+    if(!ts) return res.status(404).send("Invalid thread.");
+
+    const channelId = config.get('CHANNEL_ID');
+    const response = await getReplayMessage(channelId, req.params.ts);
+    if(!response) return res.status(400).send('Invalid parameters.');
+
+    res.send(response);
 });
 
 module.exports = router;
