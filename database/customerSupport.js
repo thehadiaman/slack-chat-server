@@ -16,5 +16,9 @@ exports.CustomerSupport = {
                 "customer_support": question._id
             }
         });
+        return;
+    },
+    findByThread: async(ts)=>{
+        return database().collection(CUSTOMER_SUPPORT_COLLECTION).findOne({ts: ts});
     }
 };

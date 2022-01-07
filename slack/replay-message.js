@@ -13,7 +13,6 @@ module.exports = async function (id, ts, message) {
         });
         return result;
     } catch (error) {
-        console.log(error);
         return false;
     }
 };

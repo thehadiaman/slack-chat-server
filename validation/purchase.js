@@ -5,6 +5,10 @@ const schemas = {
     questionSchema: {
         purchase_id: Joi.ObjectId().required(),
         question: Joi.string().min(1).max(12000).required()
+    },
+    messageSchema: {
+        ts: Joi.string().required(),
+        message: Joi.string().min(1).required()
     }
 };
 
